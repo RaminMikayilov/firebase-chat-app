@@ -10,7 +10,7 @@ const Messages = () => {
         >
           <Avatar />
           <div>
-            <h2 className="font-bold">Ramin Mikayilov</h2>
+            <h2 className="font-bold">Ramin</h2>
             <p className="text-gray-200 text-sm">last message</p>
           </div>
         </div>
