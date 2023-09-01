@@ -3,13 +3,16 @@ import Avatar from "../Avatar";
 const Message = ({ direction }) => {
   return (
     <div
-      className="flex items-end py-2 gap-2 max-w-[80%]"
-      style={direction === "right" ? { marginLeft: "auto" } : {}}
+      className={`flex items-end py-2 gap-2 max-w-[80%] ${
+        direction === "right" && "flex-row-reverse ml-auto"
+      }`}
     >
-      {direction !== "right" && <Avatar />}
+      <Avatar />
       <p
-        className={`px-3 pt-2 pb-7 rounded-lg relative ${
-          direction === "right" ? "bg-orange-400" : "bg-gray-600"
+        className={`px-3 pt-2 pb-7 rounded-xl relative ${
+          direction === "right"
+            ? "bg-orange-400 rounded-br-none"
+            : "bg-gray-600  rounded-bl-none"
         }`}
       >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit
@@ -23,7 +26,6 @@ const Message = ({ direction }) => {
           just now
         </span>
       </p>
-      {direction === "right" && <Avatar />}
     </div>
   );
 };
