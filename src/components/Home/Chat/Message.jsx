@@ -11,15 +11,15 @@ const Message = ({ direction }) => {
       <p
         className={`px-3 pt-2 pb-7 rounded-xl relative ${
           direction === "right"
-            ? "bg-orange-400 rounded-br-none"
-            : "bg-gray-600  rounded-bl-none"
+            ? "bg-cblue rounded-br-none"
+            : "bg-slate-100 text-gray-700 rounded-bl-none"
         }`}
       >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit
         repudiandae ipsa, reprehenderit eveniet accusamus at dolorum, incidunt
         atque officia molestias saepe optio dolore numquam earum?
         <span
-          className={`absolute bottom-1 text-xs bg-blue-400/50 p-1 rounded-lg ${
+          className={`absolute bottom-1 text-xs p-1 rounded-lg ${
             direction === "right" ? "left-1" : "right-1"
           } `}
         >

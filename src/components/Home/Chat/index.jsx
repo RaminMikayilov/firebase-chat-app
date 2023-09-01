@@ -4,7 +4,7 @@ import ChatFooter from "./ChatFooter";
 
 const Chat = () => {
   return (
-    <div className="w-[600px] bg-gray-200 rounded-r-lg">
+    <div className="w-[600px] rounded-r-lg bg-white">
       <ChatHeader />
       <ChatBody />
       <ChatFooter />

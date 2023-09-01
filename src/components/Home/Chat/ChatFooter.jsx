@@ -2,10 +2,10 @@ import SendIcon from "../../../assets/icons/send.svg";
 
 const ChatFooter = () => {
   return (
-    <form className="bg-white flex items-center justify-between px-1">
+    <form className="flex items-center justify-between px-1 pr-3 rounded-br-lg border-t-2 border-gray-200">
       <input
         type="text"
-        className="border-none outline-none rounded-full px-3 py-5 text-blue-500"
+        className="w-full border-none outline-none px-3 py-5 text-blue-500"
         placeholder="Type a message"
       />
 
