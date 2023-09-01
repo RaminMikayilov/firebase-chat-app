@@ -4,7 +4,7 @@ import Messages from "./Messages";
 
 const Sidebar = () => {
   return (
-    <div className="bg-orange-500 w-[300px] rounded-l-lg">
+    <div className="bg-white/90 text-cblue w-[300px] rounded-l-lg">
       <Header />
       <Searchbar />
       <Messages />

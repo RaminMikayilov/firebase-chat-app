@@ -4,7 +4,7 @@ import Register from "./pages/Register";
 
 function App() {
   return (
-    <div className="bg-[#658FFF] h-[100vh] text-white flex justify-center items-center">
+    <div className="bg-cblue h-[100vh] text-white flex justify-center items-center">
       {/* <Login /> */}
       {/* <Register /> */}
       <Home />
