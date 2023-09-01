@@ -19,7 +19,7 @@ const Message = ({ direction }) => {
         repudiandae ipsa, reprehenderit eveniet accusamus at dolorum, incidunt
         atque officia molestias saepe optio dolore numquam earum?
         <span
-          className={`absolute bottom-1 text-xs p-1 rounded-lg ${
+          className={`absolute bottom-1 text-xs p-1 rounded-lg font-bold ${
             direction === "right" ? "left-1" : "right-1"
           } `}
         >
