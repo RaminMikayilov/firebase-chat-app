@@ -1,11 +1,13 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../firebase";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +16,11 @@ const Register = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        updateProfile(user, {
+          displayName: name,
+        });
         console.log("user: ", user);
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
@@ -56,9 +62,9 @@ const Register = () => {
 
       <p className="mt-5 text-center">
         Already have an account?{" "}
-        <a href="#" className="text-blue-600 font-bold">
+        <Link to="/login" className="text-blue-600 font-bold">
           Login
-        </a>
+        </Link>
       </p>
     </div>
   );
