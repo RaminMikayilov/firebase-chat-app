@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Login = () => {
   return (
     <div className="bg-white text-blue-600 p-5 rounded-lg max-w-[90%] w-[500px] shadow-lg">
@@ -22,9 +24,9 @@ const Login = () => {
 
       <p className="mt-5 text-center">
         Don{`'`}t have an account?{" "}
-        <a href="#" className="text-blue-600 font-bold">
+        <Link to="/register" className="text-blue-600 font-bold">
           Sign up
-        </a>
+        </Link>
       </p>
     </div>
   );
