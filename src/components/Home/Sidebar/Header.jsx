@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <div className="flex items-center justify-between gap-2 px-3 py-4">
       <div className="flex gap-2 items-center">
-        <Avatar />
+        <Avatar name={currentUser.displayName} />
         <h2 className="font-extrabold">{currentUser.displayName}</h2>
       </div>
       <button
