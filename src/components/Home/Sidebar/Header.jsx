@@ -1,8 +1,12 @@
 import { auth } from "../../../firebase";
 import Avatar from "../Avatar";
 import { signOut } from "firebase/auth";
+import { AuthContext } from "../../../context/AuthContext";
+import { useContext } from "react";
 
 const Header = () => {
+  const { currentUser } = useContext(AuthContext);
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -16,7 +20,7 @@ const Header = () => {
     <div className="flex items-center justify-between gap-2 px-3 py-4">
       <div className="flex gap-2 items-center">
         <Avatar />
-        <h2 className="font-extrabold">Ramin</h2>
+        <h2 className="font-extrabold">{currentUser.displayName}</h2>
       </div>
       <button
         onClick={handleLogout}
