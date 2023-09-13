@@ -7,7 +7,6 @@ import { useContext } from "react";
 
 const Router = () => {
   const { currentUser } = useContext(AuthContext);
-  console.log("currentUser", currentUser);
 
   return (
     <BrowserRouter>

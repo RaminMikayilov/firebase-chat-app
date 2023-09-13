@@ -10,8 +10,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const connect = onAuthStateChanged(auth, (user) => setCurrentUser(user));
 
-    console.log("currentUser", currentUser);
-
     return () => {
       connect();
     };
