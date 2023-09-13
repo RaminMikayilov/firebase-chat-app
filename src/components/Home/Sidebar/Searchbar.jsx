@@ -10,12 +10,9 @@ const Searchbar = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
 
-    const q = query(
-      collection(db, "users"),
-      where("name", "==", search.trim())
+    const querySnapshot = await getDocs(
+      query(collection(db, "users"), where("name", "==", search.trim()))
     );
-
-    const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       setUser(doc.data());
     });
