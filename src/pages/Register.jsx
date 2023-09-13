@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import { auth, db } from "../firebase";
 
 const Register = () => {
@@ -10,10 +17,22 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const checkUniqueUserName = async (name) => {
+    const querySnapshot = await getDocs(
+      query(collection(db, "users"), where("name", "==", name))
+    );
+
+    if (querySnapshot.size > 0) {
+      throw new Error("Username already exists");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      await checkUniqueUserName(name);
+
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -32,7 +51,6 @@ const Register = () => {
         email: email,
       });
 
-      console.log("user", user);
       navigate("/");
     } catch (error) {
       console.error(error);
