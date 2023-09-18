@@ -1,13 +1,13 @@
 import Header from "./Header";
 import Searchbar from "./Searchbar";
-import Messages from "./Messages";
+import Users from "./Users";
 
 const Sidebar = () => {
   return (
     <div className="bg-white/90 text-cblue w-[300px] rounded-l-lg">
       <Header />
       <Searchbar />
-      <Messages />
+      <Users />
     </div>
   );
 };
