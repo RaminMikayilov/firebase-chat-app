@@ -1,13 +1,23 @@
 import { useContext, useState } from "react";
 import Profile from "./Profile";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "../../../firebase";
 import { AuthContext } from "../../../context/AuthContext";
+import { ActiveUserContext } from "../../../context/ActiveUserContext";
 
 const Searchbar = () => {
   const [user, setUser] = useState();
   const [search, setSearch] = useState("");
   const { currentUser } = useContext(AuthContext);
+  const { setActiveUser, setActiveConvo } = useContext(ActiveUserContext);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -24,6 +34,28 @@ const Searchbar = () => {
     });
   };
 
+  const handleClick = async () => {
+    const convoId =
+      currentUser.id > user.id
+        ? currentUser.uid + user.id
+        : user.id + currentUser.uid;
+
+    try {
+      const currentConvo = await getDoc(doc(db, "chats", convoId));
+      if (!currentConvo.exists()) {
+        await setDoc(doc(db, "chats", convoId), {});
+      }
+    } catch (error) {
+      console.error(error);
+    }
+
+    setActiveConvo(convoId);
+
+    setActiveUser(user);
+    // setUser(null);
+    setSearch("");
+  };
+
   return (
     <form onSubmit={handleSearch} className="border-y-2 border-blue-300">
       <input
@@ -36,7 +68,7 @@ const Searchbar = () => {
 
       {/* search results */}
       {user && (
-        <div className="px-2 py-3 space-y-3">
+        <div className="px-2 py-3 space-y-3" onClick={handleClick}>
           <Profile key={user?.id} name={user?.name} />
         </div>
       )}
